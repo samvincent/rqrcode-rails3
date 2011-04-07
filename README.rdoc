@@ -1,3 +1,5 @@
-= Rqrcode-svg
+= RQRCode-Rails3
+
+Render QR Codes easily using the [rqrcode](https://github.com/whomwah/rqrcode) gem
 
 This project rocks and uses MIT-LICENSE.
