@@ -5,11 +5,18 @@ class NavigationTest < ActiveSupport::IntegrationCase
     assert_kind_of Dummy::Application, Rails.application
   end
   
-  test 'pdf request sends a pdf as file' do
+  test 'svg request sends a svg as file' do
     visit home_path
     click_link 'SVG'
     assert_equal 'image/svg+xml; charset=utf-8', headers['Content-Type']
-    # assert_match /Prawn/, page.body
+    assert_equal File.read('test/support/data/qrcode.svg'), page.body
+  end
+
+  test 'png request sends a png as file' do
+    visit home_path
+    click_link 'PNG'
+    assert_equal 'image/png; charset=utf-8', headers['Content-Type']
+    assert_equal File.read('test/support/data/qrcode.png'), page.body
   end
   
   protected
