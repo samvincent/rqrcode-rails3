@@ -19,13 +19,11 @@ module RQRCode
             qrcode.modules.each_index do |r|
               y = c*11 + offset
               x = r*11 + offset
-              row = %{<rect width="11" height="11" x="#{x}" y="#{y}" style="fill:#000"/>}
-              col = options[:fill] ? %{<rect width="11" height="11" x="#{x}" y="#{y}" style="fill:#fff"/>} : ""
-              if qrcode.is_dark(c,r)
-                tmp << row 
-              else
-                tmp << col 
-              end
+
+              next unless qrcode.is_dark(c, r) || options[:fill]
+
+              color = qrcode.is_dark(c, r) ? "000" : "fff"
+              tmp << %{<rect width="11" height="11" x="#{x}" y="#{y}" style="fill:##{color}"/>}
             end 
             result << tmp.join
           end
