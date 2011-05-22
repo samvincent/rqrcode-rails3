@@ -4,7 +4,7 @@ module RQRCode
       class << self
         def render(qrcode, options={})
           # Padding around the qrcode 
-          offset = options[:offset] || 20
+          offset = options[:offset] || 0
 
           # height and width dependent on offset and QR complexity
           dimension = (qrcode.module_count*11) + (2*offset)
@@ -20,7 +20,7 @@ module RQRCode
               y = c*11 + offset
               x = r*11 + offset
               row = %{<rect width="11" height="11" x="#{x}" y="#{y}" style="fill:#000"/>}
-              col = %{<rect width="11" height="11" x="#{x}" y="#{y}" style="fill:#fff"/>}
+              col = options[:fill] ? %{<rect width="11" height="11" x="#{x}" y="#{y}" style="fill:#fff"/>} : ""
               if qrcode.is_dark(c,r)
                 tmp << row 
               else

@@ -1,6 +1,6 @@
 require "action_controller"
 require 'rqrcode'
-require 'rqrcode_rails3/renderers/*.rb'
+require 'rqrcode_rails3/renderers/svg.rb'
 
 module RQRCode
   Mime::Type.register "image/svg+xml", :svg
@@ -10,18 +10,17 @@ module RQRCode
     format = self.request.format.symbol
     
     qrcode = RQRCode::QRCode.new(string)
-    svg = RQRCode::Renderers::SVG::render(qrcode)
+    svg    = RQRCode::Renderers::SVG::render(qrcode)
     
+    data = \
     if format == :png
-      # Need to convert svg to png with mini magic
-      path = File.join(File.dirname(__FILE__), '../test/support/data/qrcode.png')
-      png = File.read path
-      
-      content_data = png
+      image = MiniMagick::Image.read(svg) { |i| i.format "svg" }
+      image.format "png"
+      png = image.to_blob
     else
-      content_data = svg
+      svg
     end
     
-    self.response_body = render_to_string(:text => content_data, :template => nil)
+    self.response_body = render_to_string(:text => data, :template => nil)
   end
 end
