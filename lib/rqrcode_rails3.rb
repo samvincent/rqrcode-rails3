@@ -1,4 +1,4 @@
-require "action_controller"
+require 'action_controller'
 require 'rqrcode'
 require 'rqrcode_rails3/renderers/svg.rb'
 
