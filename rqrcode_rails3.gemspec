@@ -2,8 +2,8 @@
 # project in your rails apps through git.
 Gem::Specification.new do |s|
   s.name = "rqrcode-rails3"
-  s.summary = "Render QRCodes within your Rails 3 application."
-  s.description = "Render QRCodes within your Rails 3 application."
+  s.summary = "Render QR Codes with Rails 3"
+  s.description = "Render QR Codes with Rails 3"
   s.files = Dir["{app,lib,config}/**/*"] + ["MIT-LICENSE", "Rakefile", "Gemfile", "README.rdoc"]
-  s.version = "0.0.1"
+  s.version = "0.1.0"
 end
