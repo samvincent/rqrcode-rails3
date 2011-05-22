@@ -20,6 +20,11 @@ In your controller actions, you can return a QRCode that links to the current pa
     format.svg { render :qrcode => request.url }
     format.png { render :qrcode => request.url }
   end
+  
+----------------------------------------
+
+This project was inspired by the first chapter in José Valim's book "Crafting Rails Applications."
+QR Codes are encoded by 'rqrcode' [https://github.com/whomwah/rqrcode]
 
 ----------------------------------------
 

@@ -5,14 +5,14 @@ class NavigationTest < ActiveSupport::IntegrationCase
     assert_kind_of Dummy::Application, Rails.application
   end
   
-  test 'svg request sends a svg as file' do
+  test 'svg request returns an SVG file' do
     visit home_path
     click_link 'SVG'
     assert_equal 'image/svg+xml; charset=utf-8', headers['Content-Type']
     assert_equal File.read('test/support/data/qrcode.svg'), page.body
   end
 
-  test 'png request sends a png as file' do
+  test 'png request returns an PNG file' do
     visit home_path
     click_link 'PNG'
     assert_equal 'image/png; charset=utf-8', headers['Content-Type']    
