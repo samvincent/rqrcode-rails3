@@ -1,19 +1,23 @@
-Render QR Codes easily from your Rails 3 controllers. This gem can return SVG and PNG files.
+= Render QR codes easily from your Rails 3 application
+
+This gem supports rendering either SVG or PNG format.
+
+SVG, because of it's vector nature, will scale easily when intended for print. Offering QR endpoints enables others to integrate with your service in possibly interesting ways.
 
 == Installation
 
-Add the gem to your Gemfile
+Add the following to your +Gemfile+.
 
-  gem "rqrcode-rails3"
+  gem 'rqrcode-rails3'
 
-If you want to use the PNG format, you will have to have ImageMagick installed on your system.
-You will also want to add the "mini_magick" gem to your Gemfile
+If you want to use the PNG format, you will have to have *ImageMagick* installed on your system.
+You will also want to add the *mini_magick* gem to your application's +Gemfile+.
 
-  gem "mini_magick"
+  gem 'mini_magick'
 
 == How to use
 
-In your controller actions, you can return a QRCode that links to the current page like this:
+In your controller actions, you could return a QR code that links to the current page like this:
 
   respond_to do |format|
     format.html
@@ -21,13 +25,8 @@ In your controller actions, you can return a QRCode that links to the current pa
     format.png { render :qrcode => request.url }
   end
   
+== About
 
-==== About
+This project was inspired by the first chapter in José Valim's book {Crafting Rails Applications}[http://pragprog.com/titles/jvrails/crafting-rails-applications]
 
-This project was inspired by the first chapter in José Valim's book "Crafting Rails Applications."
-
-QR Codes are encoded by 'rqrcode' [https://github.com/whomwah/rqrcode]
-
-----------------------------------------
-
-This project rocks and uses MIT-LICENSE.
+QR codes are encoded by {rqrcode}[https://github.com/whomwah/rqrcode]
