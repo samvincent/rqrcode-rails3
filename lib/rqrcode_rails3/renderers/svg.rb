@@ -32,6 +32,15 @@ module RQRCode
             end 
             result << tmp.join
           end
+
+          # Color background squares as well unless options[:blank_padding] is true
+          if options[:offset] && options[:fill] && !options[:blank_padding]
+            result << %{<rect width="#{offset}" height="#{dimension}" x="0" y="0" style="fill:##{light}"/>}
+            result << %{<rect width="#{offset}" height="#{dimension}" x="#{dimension-offset}" y="0" style="fill:##{light}"/>}
+            result << %{<rect width="#{dimension-2*offset}" height="#{offset}" x="#{offset}" y="0" style="fill:##{light}"/>}
+            result << %{<rect width="#{dimension-2*offset}" height="#{offset}" x="#{offset}" y="#{dimension-offset}" style="fill:##{light}"/>}
+          end
+
           svg = [xml_tag, open_tag, result, close_tag].flatten.join("\n")
         end
       end
