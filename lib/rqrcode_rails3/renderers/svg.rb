@@ -2,14 +2,17 @@ module RQRCode
   module Renderers
     class SVG
       class << self
-        def render(qrcode, options={})
-          # Padding around the qrcode 
-          offset = options[:offset] || 0
+        # Render the SVG from the qrcode string provided from the RQRCode gem
+        #   Options:
+        #   offset - Padding around the QrCode e.g. 10
+        #   fill   - Background color e.g "ffffff"
+        #   color  - Foreground color for the code e.g. "000000"
+        #   blank_padding - Only used when using offset and fill options, set to true to leave the padding a blank color. Default is false
 
-          # Dark color
-          light = options[:fill] || "fff"
-          # Light color
-          dark = options[:color] || "000"
+        def render(qrcode, options={})
+          offset  = options[:offset].to_i || 0
+          light   = options[:fill]        || "fff"
+          dark    = options[:color]       || "000"
 
           # height and width dependent on offset and QR complexity
           dimension = (qrcode.module_count*11) + (2*offset)
@@ -33,7 +36,7 @@ module RQRCode
             result << tmp.join
           end
 
-          # Color background squares as well unless options[:blank_padding] is true
+          # Color background squares as well
           if options[:offset] && options[:fill] && !options[:blank_padding]
             result << %{<rect width="#{offset}" height="#{dimension}" x="0" y="0" style="fill:##{light}"/>}
             result << %{<rect width="#{offset}" height="#{dimension}" x="#{dimension-offset}" y="0" style="fill:##{light}"/>}
