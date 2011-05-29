@@ -6,6 +6,11 @@ module RQRCode
           # Padding around the qrcode 
           offset = options[:offset] || 0
 
+          # Dark color
+          light = options[:fill] || "fff"
+          # Light color
+          dark = options[:color] || "000"
+
           # height and width dependent on offset and QR complexity
           dimension = (qrcode.module_count*11) + (2*offset)
 
@@ -22,7 +27,7 @@ module RQRCode
 
               next unless qrcode.is_dark(c, r) || options[:fill]
 
-              color = qrcode.is_dark(c, r) ? "000" : "fff"
+              color = qrcode.is_dark(c, r) ? dark : light
               tmp << %{<rect width="11" height="11" x="#{x}" y="#{y}" style="fill:##{color}"/>}
             end 
             result << tmp.join
