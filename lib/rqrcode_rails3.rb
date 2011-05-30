@@ -10,7 +10,7 @@ module RQRCode
     format = self.request.format.symbol
     
     qrcode = RQRCode::QRCode.new(string)
-    svg    = RQRCode::Renderers::SVG::render(qrcode)
+    svg    = RQRCode::Renderers::SVG::render(qrcode, options)
     
     data = \
     if format == :png
