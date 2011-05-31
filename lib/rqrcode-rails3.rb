@@ -1,0 +1,1 @@
+require 'rqrcode_rails3'
