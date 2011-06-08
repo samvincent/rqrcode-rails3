@@ -1,0 +1,4 @@
+== 0.1.2 2011-06-08
+* bug fix
+  * gem no longer needs to have a require statement
+  * Basic color setting options implemented, however they render poorly or not at all in PNG format

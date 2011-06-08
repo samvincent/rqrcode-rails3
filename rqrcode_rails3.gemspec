@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.author      = "Sam Vincent"
   s.email       = "sam.vincent@mac.com"
   s.homepage    = "http://github.com/samvincent/rqrcode-rails3"
-  s.version     = "0.1.1"
+  s.version     = "0.1.2"
   
   s.add_dependency 'rqrcode', '>= 0.3.3'
 end
