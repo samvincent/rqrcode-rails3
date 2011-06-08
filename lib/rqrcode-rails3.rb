@@ -18,6 +18,10 @@ module RQRCode
       image = MiniMagick::Image.read(svg) { |i| i.format "svg" }
       image.format "png"
       png = image.to_blob
+      
+      options[:cache].call(png) if options[:cache] && options[:cache].is_a?(Proc)
+      
+      png
     else
       svg
     end
