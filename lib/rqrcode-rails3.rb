@@ -8,8 +8,9 @@ module RQRCode
   
   ActionController::Renderers.add :qrcode do |string, options|
     format = self.request.format.symbol
+    size = options[:size] || 3
     
-    qrcode = RQRCode::QRCode.new(string)
+    qrcode = RQRCode::QRCode.new(string, :size => size)
     svg    = RQRCode::Renderers::SVG::render(qrcode, options)
     
     data = \
