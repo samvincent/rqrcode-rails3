@@ -8,8 +8,9 @@ module RQRCode
   
   ActionController::Renderers.add :qrcode do |string, options|
     format = self.request.format.symbol
+    size = options[:size] || 3
     
-    qrcode = RQRCode::QRCode.new(string)
+    qrcode = RQRCode::QRCode.new(string, :size => size)
     svg    = RQRCode::Renderers::SVG::render(qrcode, options)
     
     data = \
@@ -17,6 +18,10 @@ module RQRCode
       image = MiniMagick::Image.read(svg) { |i| i.format "svg" }
       image.format "png"
       png = image.to_blob
+      
+      options[:cache].call(png) if options[:cache] && options[:cache].is_a?(Proc)
+      
+      png
     else
       svg
     end
