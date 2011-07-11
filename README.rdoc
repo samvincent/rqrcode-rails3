@@ -25,6 +25,13 @@ In your controller actions, you could return a QR code that links to the current
     format.png { render :qrcode => request.url }
   end
   
+Options:
+
+* +:size+   – This controls how big the QR Code will be. Smallest size will be chosen by default. Set to maintain consistent size.
+* +:offset+ – Padding around the QR Code (e.g. 10)
+* +:fill+   – Background color (e.g "ffffff" or :white)
+* +:color+  – Foreground color for the code (e.g. "000000" or :black)
+  
 == About
 
 This project was inspired by the first chapter in José Valim's book {Crafting Rails Applications}[http://pragprog.com/titles/jvrails/crafting-rails-applications]
