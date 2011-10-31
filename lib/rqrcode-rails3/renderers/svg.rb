@@ -28,14 +28,14 @@ module RQRCode
 
               next unless qrcode.is_dark(c, r)
               tmp << %{<rect width="11" height="11" x="#{x}" y="#{y}" style="fill:##{color}"/>}
-            end 
+            end
             result << tmp.join
           end
-          
+
           if options[:fill]
             result.unshift %{<rect width="#{dimension}" height="#{dimension}" x="0" y="0" style="fill:##{options[:fill]}"/>}
           end
-          
+
           svg = [xml_tag, open_tag, result, close_tag].flatten.join("\n")
         end
       end
