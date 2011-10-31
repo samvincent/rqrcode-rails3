@@ -1,7 +1,7 @@
 module RQRCode
   module SizeCalculator
     # size - seems to follow this logic
-    #     # | input | modules 
+    #     # | input | modules
     #       | size  | created
     #-------|-------|--------
     #     1 |     7 |      21
@@ -18,14 +18,14 @@ module RQRCode
     #    12 |   155 |      65   -
     #    13 |   177 |      69   -
     #    14 |   194 |      73   -
-    
+
     QR_CHAR_SIZE_VS_SIZE = [7, 14, 24, 34, 44, 58, 64, 84, 98, 119, 137, 155, 177, 194]
-    
+
     def minimum_qr_size_from_string(string)
       QR_CHAR_SIZE_VS_SIZE.each_with_index do |size, index|
         return (index + 1) if string.size < size
       end
-      
+
       # If it's particularly big, we'll try and create codes until it accepts
       i = QR_CHAR_SIZE_VS_SIZE.size
       begin
