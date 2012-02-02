@@ -4,8 +4,8 @@ require 'rqrcode-rails3/size_calculator.rb'
 require 'rqrcode-rails3/renderers/svg.rb'
 
 module RQRCode
-  Mime::Type.register "image/svg+xml", :svg
-  Mime::Type.register "image/png",     :png  
+  Mime::Type.register "image/svg+xml", :svg unless Mime::Type.lookup_by_extension(:svg)
+  Mime::Type.register "image/png",     :png unless Mime::Type.lookup_by_extension(:png)
   
   extend SizeCalculator
   
