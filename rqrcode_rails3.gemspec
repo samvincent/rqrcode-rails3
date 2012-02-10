@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.summary     = "Render QR codes with Rails 3"
   s.description = "Render QR codes with Rails 3"
   
-  s.files       = Dir["{app,lib,config}/**/*"] + ["MIT-LICENSE", "Rakefile", "Gemfile", "README.rdoc"]
+  s.files       = Dir["{app,lib,config}/**/*"] + ["MIT-LICENSE", "Rakefile", "Gemfile", "README.md"]
   
   s.author      = "Sam Vincent"
   s.email       = "sam.vincent@mac.com"
