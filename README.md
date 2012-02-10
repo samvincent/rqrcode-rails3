@@ -21,14 +21,20 @@ In your controller actions, you could return a QR code that links to the current
 
   respond_to do |format|
     format.html
-    format.svg { render :qrcode => request.url }
+    format.svg { render :qrcode => request.url, :level => :l, :unit => 10 }
     format.png { render :qrcode => request.url }
   end
   
 Options:
 
 * +:size+   – This controls how big the QR Code will be. Smallest size will be chosen by default. Set to maintain consistent size.
+* +:level*  – The error correction level, can be:
+  * Level :l 7%  of code can be restored
+  * Level :m 15% of code can be restored
+  * Level :q 25% of code can be restored
+  * Level :h 30% of code can be restored (default :h) 
 * +:offset+ – Padding around the QR Code (e.g. 10)
+* +:unit+   – How many pixels per module (e.g. 11)
 * +:fill+   – Background color (e.g "ffffff" or :white)
 * +:color+  – Foreground color for the code (e.g. "000000" or :black)
   

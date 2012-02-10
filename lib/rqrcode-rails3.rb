@@ -11,9 +11,10 @@ module RQRCode
   
   ActionController::Renderers.add :qrcode do |string, options|
     format = self.request.format.symbol
-    size   = options[:size] || RQRCode.minimum_qr_size_from_string(string)
+    size   = options[:size]  || RQRCode.minimum_qr_size_from_string(string)
+    level  = options[:level] || :h
     
-    qrcode = RQRCode::QRCode.new(string, :size => size)
+    qrcode = RQRCode::QRCode.new(string, :size => size, :level => level)
     svg    = RQRCode::Renderers::SVG::render(qrcode, options)
     
     data = \
