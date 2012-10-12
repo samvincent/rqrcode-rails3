@@ -20,11 +20,6 @@ module RQRCode
     svg    = RQRCode::Renderers::SVG::render(qrcode, options)
     
     data = \
-#    if format == :png
-#      image = MiniMagick::Image.read(svg) { |i| i.format "svg" }
-#      image.format "png"
-#      image.to_blob
-#    else
     if format && format != :svg
       image = MiniMagick::Image.read(svg) { |i| i.format "svg" }
       image.format format
