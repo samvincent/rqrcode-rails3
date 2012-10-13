@@ -6,7 +6,9 @@ require 'rqrcode-rails3/renderers/svg.rb'
 module RQRCode
   Mime::Type.register "image/svg+xml", :svg unless Mime::Type.lookup_by_extension(:svg)
   Mime::Type.register "image/png",     :png unless Mime::Type.lookup_by_extension(:png)
-  
+	Mime::Type.register "image/jpeg",     :png unless Mime::Type.lookup_by_extension(:jpeg)
+  Mime::Type.register "image/gif",     :png unless Mime::Type.lookup_by_extension(:gif)
+	
   extend SizeCalculator
   
   ActionController::Renderers.add :qrcode do |string, options|
@@ -18,11 +20,11 @@ module RQRCode
     svg    = RQRCode::Renderers::SVG::render(qrcode, options)
     
     data = \
-    if format == :png
+    if format && [:png,:jpeg,:gif].include?(format)
       image = MiniMagick::Image.read(svg) { |i| i.format "svg" }
-      image.format "png"
-      png = image.to_blob
-    else
+      image.format format
+      image.to_blob
+    else			
       svg
     end
     
