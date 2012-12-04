@@ -1,3 +1,6 @@
+== 0.1.6 2012-12-04
+* major enhancements
+  * Added support for JPEG and GIF rendering - ([@shawnpyle][])
 == 0.1.5 2012-02-10
 * major enhancements
   * Added :level option

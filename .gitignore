@@ -7,3 +7,4 @@ test/dummy/tmp/
 Gemfile.lock
 *.gem
 nbproject
+.DS_Store

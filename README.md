@@ -1,16 +1,16 @@
 # Render QR codes easily from your Rails 3 application
 
-This gem supports rendering either SVG or PNG format.
+This gem supports rendering either SVG or PNG, JPEG, and GIF formats.
 
 SVG, because of it's vector nature, will scale easily when intended for print. Offering QR endpoints enables others to integrate with your service in possibly interesting ways.
 
 ## Installation
 
-Add the following to your +Gemfile+.
+Add the following to your `Gemfile`.
 
     gem 'rqrcode-rails3'
 
-If you want to use the PNG format, you will have to have *ImageMagick* installed on your system.
+If you want to use the PNG, JPEG or GIF format, you will have to have **ImageMagick** installed on your system.
 You will also want to add the **mini_magick** gem to your application's `Gemfile`.
 
     gem 'mini_magick'
@@ -22,9 +22,9 @@ In your controller actions, you could return a QR code that links to the current
 ```ruby
 respond_to do |format|
   format.html
-  format.svg { render :qrcode => request.url, :level => :l, :unit => 10 }
-  format.png { render :qrcode => request.url }
-  format.gif { render :qrcode => request.url }
+  format.svg  { render :qrcode => request.url, :level => :l, :unit => 10 }
+  format.png  { render :qrcode => request.url }
+  format.gif  { render :qrcode => request.url }
   format.jpeg { render :qrcode => request.url }
 end
 ```
