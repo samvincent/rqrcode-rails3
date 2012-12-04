@@ -4,13 +4,13 @@ Gem::Specification.new do |s|
   s.name        = "rqrcode-rails3"
   s.summary     = "Render QR codes with Rails 3"
   s.description = "Render QR codes with Rails 3"
-  
+
   s.files       = Dir["{app,lib,config}/**/*"] + ["MIT-LICENSE", "Rakefile", "Gemfile", "README.md"]
-  
+
   s.author      = "Sam Vincent"
   s.email       = "sam.vincent@mac.com"
   s.homepage    = "http://github.com/samvincent/rqrcode-rails3"
-  s.version     = "0.1.5"
-  
+  s.version     = "0.1.6"
+
   s.add_dependency 'rqrcode', '>= 0.4.2'
 end
