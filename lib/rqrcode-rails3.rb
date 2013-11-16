@@ -11,15 +11,14 @@ module RQRCode
 
   extend SizeCalculator
 
-  ActionController::Renderers.add :qrcode do |string, options|
-    format = self.request.format.symbol
+
+  def render_qrcode(string, format, options)
     size   = options[:size]  || RQRCode.minimum_qr_size_from_string(string)
     level  = options[:level] || :h
 
     qrcode = RQRCode::QRCode.new(string, :size => size, :level => level)
     svg    = RQRCode::Renderers::SVG::render(qrcode, options)
 
-    data = \
     if format && format == :svg
       svg
     else
@@ -27,7 +26,13 @@ module RQRCode
       image.format format
       image.to_blob
     end
+  end
 
+  module_function :render_qrcode
+
+  ActionController::Renderers.add :qrcode do |string, options|
+    format = self.request.format.symbol
+    data = RQRCode.render_qrcode(string, format, options)
     self.response_body = render_to_string(:text => data, :template => nil)
   end
 end
