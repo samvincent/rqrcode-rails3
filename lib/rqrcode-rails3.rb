@@ -11,7 +11,6 @@ module RQRCode
 
   extend SizeCalculator
 
-
   def render_qrcode(string, format, options)
     size   = options[:size]  || RQRCode.minimum_qr_size_from_string(string)
     level  = options[:level] || :h

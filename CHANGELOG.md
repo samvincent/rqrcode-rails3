@@ -1,3 +1,7 @@
+## 0.1.7 2013-11-19
+### minor enhancements
+  * Refactor render code into callable function - ([@mattconnolly][])
+
 ## 0.1.6 2012-12-04
 ### major enhancements
   * Added support for JPEG and GIF rendering - ([@shawnpyle][])
