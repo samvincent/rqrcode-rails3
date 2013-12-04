@@ -21,7 +21,8 @@ module RQRCode
     if format && format == :svg
       svg
     else
-      image = MiniMagick::Image.read(svg) { |i| i.format "svg" }
+      require 'mini_magick'
+      image = ::MiniMagick::Image.read(svg) { |i| i.format "svg" }
       image.format format
       image.to_blob
     end

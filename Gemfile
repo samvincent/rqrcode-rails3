@@ -1,11 +1,9 @@
 source "http://rubygems.org"
 
-gem "rails", ">= 3.0.0"
-gem "capybara", ">= 0.4.0"
-gem "sqlite3"
+gemspec
 
-gem "rqrcode"
-gem "mini_magick"
+gem 'sqlite3', :platform => :ruby
+gem 'activerecord-jdbcpostgresql-adapter', '>= 1.3.0', :platform => :jruby
 
 # To use debugger (ruby-debug for Ruby 1.8.7+, ruby-debug19 for Ruby 1.9.2+)
 # gem 'ruby-debug'
