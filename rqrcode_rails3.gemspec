@@ -12,5 +12,8 @@ Gem::Specification.new do |s|
   s.homepage    = "http://github.com/samvincent/rqrcode-rails3"
   s.version     = "0.1.7"
 
-  s.add_dependency 'rqrcode', '>= 0.4.2'
+  s.add_dependency              'rqrcode', '>= 0.4.2'
+  s.add_development_dependency  'capybara', '>= 2.2.0'
+  s.add_development_dependency  'rails', '>= 3.1'
+  s.add_development_dependency  'mini_magick'
 end
