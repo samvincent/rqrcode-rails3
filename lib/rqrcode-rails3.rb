@@ -32,6 +32,6 @@ module RQRCode
   ActionController::Renderers.add :qrcode do |string, options|
     format = self.request.format.symbol
     data = RQRCode.render_qrcode(string, format, options)
-    self.response_body = render_to_string(:text => data, :template => nil)
+    self.response_body = render_to_string(:plain => data, :template => nil)
   end
 end
